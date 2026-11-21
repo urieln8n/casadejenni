@@ -3,6 +3,8 @@
 Pollo payés relleno y tartas caseras por encargo. Web de una sola página con la tarta en 3D,
 la carta con precios y pedido por WhatsApp.
 
+Todo lo que se publica está en `public/` (Cloudflare lo sirve según `wrangler.jsonc`).
+
 - `index.html` — la web
 - `antes-despues.html` — comparación con la web estándar
 - `aviso-legal.html`, `privacidad.html`, `cookies.html` — páginas legales (faltan los datos del titular)

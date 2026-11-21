@@ -1,0 +1,8 @@
+{
+  // Web estática servida por Cloudflare Workers (static assets). El nombre debe coincidir con el Worker del panel.
+  "name": "casadejenni",
+  "compatibility_date": "2026-11-21",
+  "assets": {
+    "directory": "./public/"
+  }
+}
