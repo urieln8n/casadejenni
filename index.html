@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Casa de Jenni — Comida de domingo, hecha por Jenni</title>
+  <meta name="description" content="Pollo payés relleno (65 €) y tartas caseras de nata, fruta y chocolate (60 €), por encargo. Haz tu pedido por WhatsApp.">
+  <meta name="theme-color" content="#2a1810">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="libs/fuentes/fuentes.css">
+
+  <!-- Librerías servidas desde la propia web (herramientas/localizar.mjs): sin CDN externo -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./libs/three/build/three.module.js",
+      "three/addons/": "./libs/three/examples/jsm/",
+      "gsap": "./libs/gsap/index.js",
+      "gsap/ScrollTrigger": "./libs/gsap/ScrollTrigger.js",
+      "lenis": "./libs/lenis/dist/lenis.mjs"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="motor-3d/motor3d.css">
+  <style>
+    :root {
+      --m3d-fondo: #2a1810;
+      --m3d-texto: #f6ecdc;
+      --m3d-acento: #e2a947;
+      --m3d-sobre-acento: #2a1810;
+      --m3d-fuente: "Archivo", system-ui, sans-serif;
+      --m3d-fuente-titulos: "Yeseva One", Georgia, serif;
+    }
+    .m3d-titulo { font-weight: 400; letter-spacing: -0.005em; }
+    .m3d-lazo { color: #d2353a; }
+    .m3d-celebraciones { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; gap: .9rem; }
+    .m3d-celebraciones li { display: grid; gap: .1rem; padding-left: 1rem; border-left: 2px solid var(--m3d-acento); }
+    .m3d-celebraciones span { opacity: .75; font-size: .95rem; }
+  </style>
+</head>
+<!-- data-whatsapp: falta el número de Jenni (teléfono por confirmar). Al tenerlo: data-whatsapp="346XXXXXXXX" -->
+<body data-negocio="La Casa de Jenni">
+
+  <div class="m3d-intro" aria-hidden="true">
+    <img src="assets/logo-lazo.svg" alt="">
+  </div>
+
+  <header class="m3d-cabecera">
+    <a class="m3d-cabecera__marca" href="#inicio">
+      <img src="assets/logo-lazo.svg" alt="">
+      <span>La Casa de Jenni</span>
+    </a>
+    <a class="m3d-boton" href="#productos">Encargar</a>
+  </header>
+
+  <canvas id="escena3d"></canvas>
+
+  <!-- Objeto estrella: tarta de melocotón y cereza. PROVISIONAL, modelada por código a partir de su foto;
+       la definitiva se genera con Higgsfield (Fase 4). La copia "chocolate" enseña la otra familia de tartas. -->
+  <main data-motor3d
+        data-draco="libs/three/examples/jsm/libs/draco/gltf/"
+        data-modelo="assets/producto.glb"
+        data-acento="#e2a947"
+        data-fondo="#2a1810"
+        data-objetos='[
+          {"id":"logo","tipo":"logo","src":"assets/logo-lazo-3d.svg"},
+          {"id":"chocolate","tipo":"copia","de":"estrella","color":"#6b3b22"},
+          {"id":"ambiente","tipo":"particulas","cantidad":90,"tamano":0.06}
+        ]'>
+
+    <!-- 1 · APERTURA -->
+    <section id="inicio" class="m3d-seccion m3d-seccion--centro m3d-seccion--hero"
+             data-3d='{"rot":[28,0,0],"pos":[0,1.05,0],"escala":0.62,"cam":[0,0,6.6],"mira":[0,0,0],"explota":0,"luz":1.1,
+                       "objetos":{"ambiente":{"opacidad":0.5}}}'>
+      <div class="m3d-hero-entra">
+        <span class="m3d-etiqueta">La Casa de Jenni · por encargo</span>
+        <h1 class="m3d-titulo m3d-titulo--xl m3d-split">Comida de domingo, hecha por Jenni.</h1>
+        <p class="m3d-texto m3d-texto--grande">Pollo payés relleno y tartas caseras, por encargo.</p>
+        <div class="m3d-botones">
+          <a class="m3d-boton m3d-pulso" href="#productos">Ver lo que hace</a>
+          <a class="m3d-boton m3d-boton--fantasma" href="#pedir">Cómo pedir</a>
+        </div>
+      </div>
+      <div class="m3d-pista">Desliza</div>
+    </section>
+
+    <!-- 2 · DE SU COCINA -->
+    <section id="historia" class="m3d-seccion m3d-seccion--izq"
+             data-3d='{"rot":[22,40,0],"pos":[1.35,0,0],"escala":1,"cam":[0,0.2,6],
+                       "objetos":{"logo":{"pos":[2.55,1.6,-0.9],"rot":[0,-22,0],"escala":0.32,"opacidad":1}}}'>
+      <span class="m3d-etiqueta m3d-reveal">De su cocina</span>
+      <h2 class="m3d-titulo m3d-reveal">Sale de la cocina de Jenni.</h2>
+      <p class="m3d-texto m3d-reveal">Lo encargas, Jenni lo cocina para el día que le digas y te lo entrega. El pollo llega entero, relleno y al horno, envuelto <span class="m3d-lazo">con su lazo</span>.</p>
+      <figure class="m3d-foto m3d-foto--kenburns m3d-reveal">
+        <img src="assets/pollo.jpg" alt="Pollo payés relleno recién horneado, dorado y envuelto con un lazo rojo" loading="lazy">
+      </figure>
+    </section>
+
+    <!-- 3 · LA CARTA: cinco productos reales con su precio y pedido por WhatsApp -->
+    <section id="productos" class="m3d-seccion m3d-seccion--der"
+             data-3d='{"rot":[30,160,0],"pos":[-1.7,0.4,0],"escala":0.72,"cam":[0,0,6],
+                       "objetos":{"logo":{"opacidad":0},"chocolate":{"pos":[-1.45,-0.85,0.3],"rot":[30,200,0],"escala":0.58,"opacidad":1}}}'>
+      <span class="m3d-etiqueta m3d-reveal">La carta</span>
+      <h2 class="m3d-titulo m3d-reveal">Pollo a 65&nbsp;€. Tartas a 60&nbsp;€.</h2>
+      <div class="m3d-rejilla">
+        <article class="m3d-tarjeta m3d-reveal" data-producto="Pollo payés relleno" data-precio="65">
+          <img src="assets/pollo.jpg" alt="Pollo payés relleno envuelto con lazo rojo" loading="lazy">
+          <h3>Pollo payés relleno</h3>
+          <p>Entero, relleno y al horno. Llega envuelto, con su lazo.</p>
+          <span class="m3d-precio">65 €</span>
+          <small class="m3d-alergenos">Alérgenos: pendiente de confirmar con Jenni</small>
+          <button type="button" class="m3d-boton m3d-boton--fantasma m3d-anadir">Añadir al pedido</button>
+        </article>
+        <article class="m3d-tarjeta m3d-reveal" data-producto="Tarta de nata y melocotón" data-precio="60">
+          <img src="assets/tarta-melocoton.jpg" alt="Tarta de nata montada con melocotón en almíbar" loading="lazy">
+          <h3>Nata y melocotón</h3>
+          <p>Nata montada y melocotón en almíbar.</p>
+          <span class="m3d-precio">60 €</span>
+          <small class="m3d-alergenos">Alérgenos: pendiente de confirmar con Jenni</small>
+          <button type="button" class="m3d-boton m3d-boton--fantasma m3d-anadir">Añadir al pedido</button>
+        </article>
+        <article class="m3d-tarjeta m3d-reveal" data-producto="Tarta de melocotón y cereza" data-precio="60">
+          <img src="assets/tarta-cerezas.jpg" alt="Tarta con melocotón en flor, cerezas y borde de nata" loading="lazy">
+          <h3>Melocotón y cereza</h3>
+          <p>Melocotón en flor, cerezas y un borde de nata.</p>
+          <span class="m3d-precio">60 €</span>
+          <small class="m3d-alergenos">Alérgenos: pendiente de confirmar con Jenni</small>
+          <button type="button" class="m3d-boton m3d-boton--fantasma m3d-anadir">Añadir al pedido</button>
+        </article>
+        <article class="m3d-tarjeta m3d-reveal" data-producto="Tarta de chocolate" data-precio="60">
+          <img src="assets/tarta-chocolate.jpg" alt="Tarta de chocolate con virutas y rosetas de crema" loading="lazy">
+          <h3>Chocolate</h3>
+          <p>Virutas de chocolate y rosetas de crema.</p>
+          <span class="m3d-precio">60 €</span>
+          <small class="m3d-alergenos">Alérgenos: pendiente de confirmar con Jenni</small>
+          <button type="button" class="m3d-boton m3d-boton--fantasma m3d-anadir">Añadir al pedido</button>
+        </article>
+        <article class="m3d-tarjeta m3d-reveal" data-producto="Tarta de crema y chocolate" data-precio="60">
+          <img src="assets/tarta-moka.jpg" alt="Tarta de crema con virutas oscuras y borde rizado" loading="lazy">
+          <h3>Crema y chocolate</h3>
+          <p>Crema suave, virutas oscuras y un borde rizado.</p>
+          <span class="m3d-precio">60 €</span>
+          <small class="m3d-alergenos">Alérgenos: pendiente de confirmar con Jenni</small>
+          <button type="button" class="m3d-boton m3d-boton--fantasma m3d-anadir">Añadir al pedido</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4 · CÓMO PEDIR: la cámara baja sobre la tarta y las capas se separan -->
+    <section id="pedir" class="m3d-seccion m3d-seccion--izq"
+             data-3d='{"rot":[38,250,0],"pos":[1.25,0,0],"escala":1.1,"cam":[0,0.3,5],"mira":[0.3,0,0],"explota":0.55,"luz":1.25,
+                       "objetos":{"chocolate":{"opacidad":0}}}'>
+      <span class="m3d-etiqueta m3d-reveal">Cómo pedir</span>
+      <h2 class="m3d-titulo m3d-reveal">Así llega a tu mesa.</h2>
+      <ol class="m3d-puntos">
+        <li class="m3d-reveal"><strong>Eliges</strong><span>Pollo, tartas y el día que lo quieres.</span></li>
+        <li class="m3d-reveal"><strong>Lo envías por WhatsApp</strong><span>Sale escrito, con el total. Jenni te confirma.</span></li>
+        <li class="m3d-reveal"><strong>Lo recoges</strong><span>El día acordado. Zona de recogida: por confirmar.</span></li>
+      </ol>
+    </section>
+
+    <!-- 5 · CELEBRACIONES (la puerta al catering) -->
+    <section id="celebraciones" class="m3d-seccion m3d-seccion--der"
+             data-3d='{"rot":[25,400,0],"pos":[-1.3,0.1,0],"escala":1,"cam":[0,0,6],"mira":[0,0,0],"explota":0,"luz":1}'>
+      <span class="m3d-etiqueta m3d-reveal">Celebraciones</span>
+      <h2 class="m3d-titulo m3d-reveal">¿Una celebración en casa?</h2>
+      <p class="m3d-texto m3d-reveal">Cuéntale a Jenni cuántos sois y qué queréis en la mesa. Lo habláis por WhatsApp.</p>
+      <ul class="m3d-celebraciones m3d-reveal">
+        <li><strong>Comuniones</strong><span>Pollo y tarta para toda la familia</span></li>
+        <li><strong>Cumpleaños</strong><span>La tarta, o la comida entera</span></li>
+        <li><strong>Comidas de empresa</strong><span>Bandejas para compartir en la oficina</span></li>
+      </ul>
+      <div class="m3d-botones m3d-reveal">
+        <a class="m3d-boton" href="#" data-whatsapp-texto="Hola Jenni, quiero preparar una celebración. Somos ___ personas y sería el día ___.">Escribir a Jenni</a>
+      </div>
+    </section>
+
+    <!-- 6 · CIERRE -->
+    <section id="cierre" class="m3d-seccion m3d-seccion--centro m3d-seccion--abajo"
+             data-3d='{"rot":[30,720,0],"pos":[-0.7,1.0,0],"escala":0.55,"cam":[0,0,6.6],"mira":[0,0,0],"explota":0,"luz":1.2,
+                       "objetos":{"logo":{"pos":[0.85,1.1,0],"rot":[0,0,0],"escala":0.42,"opacidad":1},"ambiente":{"opacidad":0.5}}}'>
+      <span class="m3d-etiqueta m3d-reveal">La Casa de Jenni</span>
+      <h2 class="m3d-titulo m3d-titulo--xl m3d-reveal">Gracias por encargar en casa.</h2>
+      <p class="m3d-texto m3d-texto--grande m3d-reveal">Cada pedido sale de mi cocina. Un abrazo, Jenni.</p>
+      <div class="m3d-botones m3d-reveal" style="justify-content:center">
+        <a class="m3d-boton m3d-pulso" href="#productos">Hacer un pedido</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="m3d-pie">
+    <nav>
+      <a href="#productos">La carta</a>
+      <a href="#pedir">Cómo pedir</a>
+      <a href="#celebraciones">Celebraciones</a>
+    </nav>
+    <div>La Casa de Jenni · pollo payés relleno y tartas caseras por encargo</div>
+    <nav class="m3d-pie__legal" aria-label="Legal">
+      <a href="aviso-legal.html">Aviso legal</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="cookies.html">Cookies</a>
+    </nav>
+  </footer>
+
+  <div class="m3d-pedido" hidden></div>
+  <script type="module" src="motor-3d/motor3d.js"></script>
+  <script src="motor-3d/pedido.js" defer></script>
+</body>
+</html>
