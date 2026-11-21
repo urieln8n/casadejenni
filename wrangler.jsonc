@@ -4,5 +4,10 @@
   "compatibility_date": "2026-11-21",
   "assets": {
     "directory": "./public/"
-  }
+  },
+  // Dominio propio: Cloudflare crea los DNS y el certificado al desplegar (el dominio está en esta cuenta)
+  "routes": [
+    { "pattern": "lacasadejenni.com", "custom_domain": true },
+    { "pattern": "www.lacasadejenni.com", "custom_domain": true }
+  ]
 }
