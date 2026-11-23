@@ -1,0 +1,15 @@
+# La Casa de Jenni
+
+> Pollo payés relleno y tartas caseras por encargo. Los pedidos se hacen por WhatsApp desde la web.
+
+## Carta
+- Pollo payés relleno: 65 €. Entero, relleno y al horno; llega envuelto, con su lazo.
+- Tarta de nata y melocotón: 60 €.
+- Tarta de melocotón y cereza: 60 €.
+- Tarta de chocolate: 60 €.
+- Tarta de crema y chocolate: 60 €.
+
+## Cómo pedir
+Elige los productos en https://lacasadejenni.com/ y envía el pedido por WhatsApp. Pregunta por alérgenos al hacer el pedido.
+
+Precios actualizados en noviembre de 2026.

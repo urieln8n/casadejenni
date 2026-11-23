@@ -1,2 +1,7 @@
+# La Casa de Jenni: abierta a buscadores y asistentes de IA
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /original/
+Disallow: /capturas/
+
+Sitemap: https://lacasadejenni.com/sitemap.xml
